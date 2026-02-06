@@ -31,10 +31,13 @@ void processImage(char* filename) {
     int channels;
 
     unsigned char* image = stbi_load(filename, &x, &y, &channels, desired_channels);
+    draw((int*)image, x, y);
+    /*
     printf("X: %d, Y: %d, Channels: %d\n", x, y, channels);
     for (int i = 0; i < x; i++) {
         printf("%d, %c\n", i, image[i]);
     }
+    */
     stbi_image_free(image);
 }
 
@@ -57,6 +60,7 @@ int main(int argc, char** argv) {
             printf("%s\n", USAGEMSG);
             break;
     }
+}
 
 /* get_colour()
  * returns the char to be used in ascii image given grayscale
@@ -75,4 +79,4 @@ void draw(int* grayscale, int width, int height) {
         printf("\n");
     }
     printf("\n");
-   
+} 
