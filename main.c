@@ -6,8 +6,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-#define WIDTH 100
-#define HEIGHT 100
+#define WIDTH 165
+#define HEIGHT 240
 
 #define USAGEMSG "Usage: ./main [filename] [channels]. Alternatively, ./main help for more info."
 #define HELPMSG "Filename: The name of the image file (e.g. clare.png)\n Channels: The number of channels in the image file. Typically 3 for JPEGs or RGB (coloured) images (4 if it has an alpha value) and 1 for Greyscale images (2 if it has an alpha value)."
@@ -66,14 +66,19 @@ int main(int argc, char** argv) {
  * returns the char to be used in ascii image given grayscale
  */
 char get_colour(int num) {
-    int index = num /4;
+    int index = (num / 4) % 64;
     return ascii[index];
 }
 
 void draw(unsigned char* grayscale, int width, int height) {
+    printf("W: %d, H: %d\n", width, height);
     for (int x = 0; x < width; x++) {
-        for (int y = 0; y < height; y++) {
-            int index = x*width + y;
+        printf("%d", x % 10);
+    }
+    printf("\n");
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int index = y*width + x;
             printf("%c", get_colour(grayscale[index]));
         }
         printf("\n");
