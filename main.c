@@ -16,6 +16,14 @@
 #define TOOMANYARGS "Expected 1 argument (filename) received more"
 #define PROCESSINGMSG "Processing Image"
 
+// constant strings
+const char* const ascii = " .'`^\",:;l!i><+_-?][}{1)(|\\/fjrxuvczXYUJCLQOZmwqpdbkho*#MW&8%B@$";
+
+// function prototypes
+char get_colour(int num);
+void draw(int* grayscale, int width, int height);
+
+
 void processImage(char* filename) {
     int desired_channels = 1;
     int x;
@@ -50,5 +58,21 @@ int main(int argc, char** argv) {
             break;
     }
 
-    return 1;
+/* get_colour()
+ * returns the char to be used in ascii image given grayscale
+ */
+char get_colour(int num) {
+    int index = num /4;
+    return ascii[index];
+}
+
+void draw(int* grayscale, int width, int height) {
+    for (int x = 0; x < width; x++) {
+        for (int y = 0; y < height; y++) {
+            int index = x*width + y;
+            printf("%c", get_colour(grayscale[index]));
+        }
+        printf("\n");
+    }
+    printf("\n");
 }
