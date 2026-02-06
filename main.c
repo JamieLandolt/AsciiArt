@@ -75,4 +75,4 @@ void draw(int* grayscale, int width, int height) {
         printf("\n");
     }
     printf("\n");
-}
+   
