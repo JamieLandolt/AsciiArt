@@ -21,7 +21,7 @@ const char* const ascii = " .'`^\",:;l!i><+_-?][}{1)(|\\/fjrxuvczXYUJCLQOZmwqpdb
 
 // function prototypes
 char get_colour(int num);
-void draw(int* grayscale, int width, int height);
+void draw(unsigned char* grayscale, int width, int height);
 
 
 void processImage(char* filename) {
@@ -31,7 +31,7 @@ void processImage(char* filename) {
     int channels;
 
     unsigned char* image = stbi_load(filename, &x, &y, &channels, desired_channels);
-    draw((int*)image, x, y);
+    draw(image, x, y);
     /*
     printf("X: %d, Y: %d, Channels: %d\n", x, y, channels);
     for (int i = 0; i < x; i++) {
@@ -70,7 +70,7 @@ char get_colour(int num) {
     return ascii[index];
 }
 
-void draw(int* grayscale, int width, int height) {
+void draw(unsigned char* grayscale, int width, int height) {
     for (int x = 0; x < width; x++) {
         for (int y = 0; y < height; y++) {
             int index = x*width + y;
