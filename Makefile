@@ -1,7 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -pedantic -std=gnu99
+LDFLAGS = -lm
 OUT = main
 
-all: main
+all: $(OUT)
 
-main: main.c
+$(OUT): main.c
