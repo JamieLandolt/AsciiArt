@@ -1,4 +1,5 @@
 # Turn Pictures into Ascii Art
+Select an image and turn it into ascii art!
 
 ## Usage
 Clone the repo and run ./main [path to your image file]
